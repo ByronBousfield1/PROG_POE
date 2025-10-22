@@ -57,7 +57,10 @@ public class ClaimsController : Controller
     {
         try
         {
-            var claim = await _db.Claims.Include(c => c.Lines).FirstAsync(c => c.ClaimId == id);
+            var claim = await _db.Claims
+                .Include(c => c.Lines)
+                .Include(c => c.Contract)
+                .FirstAsync(c => c.ClaimId == id);
             claim.Lines.Add(new ClaimLine { ClaimId = id, WorkDate = workDate, Hours = hours, Note = note });
             DbSeeder.Recalculate(claim, _db);
             TempData["ok"] = "Line added.";

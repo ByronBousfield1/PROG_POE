@@ -9,6 +9,7 @@
             <div class="card-body">
                 <h5 class="card-title">Edit Claim — @Model.Month.ToString("yyyy-MM")</h5>
                 <p class="text-muted">Status: <strong>@Model.Status</strong> | Stage: <strong>@Model.Stage</strong></p>
+                <p class="text-muted">Hourly rate: <strong>R @Model.Contract?.HourlyRate</strong></p>
 
                 <form method="post" action="/Claims/AddLine/@Model.ClaimId" class="row g-2">
                     <div class="col-md-4">

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<PROG_POE.Models.Claim>
+@{
+    Layout = "_Layout";
+}
+<h2>Manager Queue</h2>
+<table class="table table-striped bg-white shadow">
+    <thead><tr><th>Lecturer</th><th>Month</th><th>Hours</th><th>Amount (R)</th><th>Status</th><th>Actions</th></tr></thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Contract!.Lecturer!.FullName</td>
+                <td>@c.Month.ToString("yyyy-MM")</td>
+                <td>@c.TotalHours</td>
+                <td>@c.TotalAmount</td>
+                <td>@c.Status</td>
+                <td class="d-flex gap-2">
+                    <form method="post" action="/Queue/Approve/@c.ClaimId"><input type="hidden" name="role" value="Manager" /><button class="btn btn-sm btn-success">Approve</button></form>
+                    <form method="post" action="/Queue/Reject/@c.ClaimId"><input type="hidden" name="role" value="Manager" /><button class="btn btn-sm btn-danger">Reject</button></form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

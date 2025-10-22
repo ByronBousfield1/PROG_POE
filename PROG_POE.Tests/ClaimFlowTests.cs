@@ -145,7 +145,7 @@ public class ClaimFlowTests
             WebRootPath = Path.GetFullPath("wwwroot");
             Directory.CreateDirectory(WebRootPath); // ensure it exists for tests
             WebRootFileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(WebRootPath);
-
+               
             ContentRootPath = Directory.GetCurrentDirectory();
             ContentRootFileProvider = new Microsoft.Extensions.FileProviders.PhysicalFileProvider(ContentRootPath);
 
